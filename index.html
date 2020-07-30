@@ -12,11 +12,104 @@
         <h1>Thundercloud Dashboard</h1>
       </div>
       <div class="item-b">
-        <h1>city search goes here</h1>
+        <h2>city search</h2>
+        <div class="input-group">
+          <input type="text" class="search a city" placeholder="" />
+
+          <button class="city search" type="button">search</button>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="" />
+          <div class="input-group"></div>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="" />
+          <div class="input-group"></div>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="" />
+          <div class="input-group"></div>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="" />
+          <div class="input-group"></div>
+        </div>
       </div>
       <div class="item-c">
-        <h1>forecast goes here</h1>
+        <div id="day"></div>
+        <div class="weather">
+          <div class="appTitle">
+            <p>Weather</p>
+          </div>
+          <div class="notification"></div>
+          <div class="weatherContainer">
+            <div class="weatherIcon">
+              
+            </div>
+            <div class="temperature-value">
+              <p>-°<span>F</span></p>
+            </div>
+            <div class="description">
+              <p>-</p>
+            </div>
+            <div class="humidity">
+              <p>-</p>
+            </div>
+            <div class="windSpeed">
+              <p>-</p>
+            </div>
+
+          </div>
+          
+          
+        </div>
+        
+      </div>
+    
+    <div class="item-d">
+      <h2>5 Day Forecast</h2>
+      <div class="cards">
+        <div class="card" id="day1">
+          <div class="day1"></div>
+          <div class="icon1"></div>
+          <div class="day1High"></div>
+          <div class="day1Low"></div>
+          <div class="day1Description"></div>
+        </div>
+        <div class="card" id="day2">
+          <div class="day2"></div>
+          <div class="icon2"></div>
+          <div class="day2High"></div>
+          <div class="day2Low"></div>
+          <div class="day2Description"></div>
+        </div>
+        <div class="card id=day3">
+          <div class="day3"></div>
+          <div class="icon3"></div>
+          <div class="day3High"></div>
+          <div class="day3Low"></div>
+          <div class="day3Description"></div>
+        </div>
+        <div class="card" id="day4">
+          <div class="day4"></div>
+          <div class="icon4"></div>
+          <div class="day4High"></div>
+          <div class="day4Low"></div>
+          <div class="day4Description"></div>
+        </div>
+        <div class="card" id="day5">
+          <div class="icon5"></div>
+          <div class="day5"></div>
+          <div class="day5High"></div>
+          <div class="day5Low"></div>
+          <div class="day5Description"></div>
+        </div>
       </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="moment.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

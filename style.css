@@ -1,7 +1,7 @@
 .container {
   display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: 75px 200px auto;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 75px 300px 180px;
 }
 .item-a,
 .item-b,
@@ -18,7 +18,7 @@
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-end: 4;
   background-color: chartreuse;
 }
 .item-c {
@@ -27,4 +27,26 @@
   grid-row-start: 2;
   grid-row-end: 3;
   background-color: cornflowerblue;
+}
+.item-d {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  text-align: justify;
+}
+.cards {
+  display: flex;
+  background-color: #777;
+  border-radius: 1rem;
+  padding: 2px;
+  border: 1px;
+  bottom: 5px;
+}
+.card {
+  background-color: whitesmoke;
+  border-radius: 1rem;
+  /*margin-left: -2rem;*/
+  box-shadow: 4px 4px 12px 2px;
+  bottom: 5px;
+  height: 180px;
+  width: 140px;
 }
