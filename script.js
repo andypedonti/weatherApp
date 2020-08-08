@@ -1,4 +1,4 @@
-$(function () {
+$("#locationSearch").click(function () {
   //   const iconElement = document.querySelector(".weather-icon");
   //   const tempElement = document.querySelector(".temperature-value p");
   //   const descElement = document.querySelector(".temperature-description p");
@@ -32,10 +32,10 @@ $(function () {
         let imageElement = $("<img>").attr("src", otherUrl);
         $(".weatherIcon").append(imageElement);
         let url1 = `http://openweathermap.org/img/wn/${responce.daily[1].weather[0].icon}@2x.png`;
-        let url2 = `http://openweathermap.org/img/wn/${responce.daily[1].weather[0].icon}@2x.png`;
-        let url3 = `http://openweathermap.org/img/wn/${responce.daily[1].weather[0].icon}@2x.png`;
-        let url4 = `http://openweathermap.org/img/wn/${responce.daily[1].weather[0].icon}@2x.png`;
-        let url5 = `http://openweathermap.org/img/wn/${responce.daily[1].weather[0].icon}@2x.png`;
+        let url2 = `http://openweathermap.org/img/wn/${responce.daily[2].weather[0].icon}@2x.png`;
+        let url3 = `http://openweathermap.org/img/wn/${responce.daily[3].weather[0].icon}@2x.png`;
+        let url4 = `http://openweathermap.org/img/wn/${responce.daily[4].weather[0].icon}@2x.png`;
+        let url5 = `http://openweathermap.org/img/wn/${responce.daily[5].weather[0].icon}@2x.png`;
         let imageElement1 = $("<img>").attr("src", url1);
         let imageElement2 = $("<img>").attr("src", url2);
         let imageElement3 = $("<img>").attr("src", url3);
@@ -78,17 +78,53 @@ $(function () {
         $(".day5Low").text("low: " + d5Low.toFixed(1) + "°F");
         $(".day5Description").text(responce.daily[5].weather[0].description);
       })
-      .catch(function (error) {
-        //console.log(error);
-      });
+      .catch(function (error) {});
   }
 });
 const day = document.getElementById("day");
+const dayOne = document.getElementById("day1");
+const dayTwo = document.getElementById("day2");
+const dayThree = document.getElementById("day3");
+const dayFour = document.getElementById("day4");
+const dayFive = document.getElementById("day5");
 function updateDay() {
   const now = moment();
   const peopleReadable = now.format("dddd:hh:mma");
   day.textContent = peopleReadable;
   console.log(peopleReadable);
+  const dayOnepr = moment().add(1, "days");
+  const dayOnePeopleReadable = dayOnepr.format("dddd: MMM: D");
+  day1.textContent = dayOnePeopleReadable;
+  const daytwopr = moment().add(2, "days");
+  const dayTwoPeopleReadable = daytwopr.format("dddd: MMM: D");
+  day2.textContent = dayTwoPeopleReadable;
+  const dayThreepr = moment().add(3, "days");
+  const dayThreePeopleReadable = dayThreepr.format("dddd: MMM: D");
+  day3.textContent = dayThreePeopleReadable;
+  const dayFourpr = moment().add(4, "days");
+  const dayFourPeopleReadable = dayFourpr.format("dddd: MMM: D");
+  day4.textContent = dayFourPeopleReadable;
+  const dayFivepr = moment().add(5, "days");
+  const dayFivePeopleReadable = dayFivepr.format("dddd: MMM: D");
+  day5.textContent = dayFivePeopleReadable;
+
+  updateDay();
 }
-//setInterval(updateDay, 1000);
-updateDay();
+
+$("#citySearch").click(function () {
+  console.log("you clicked city search");
+  function citySearch() {
+    let city = document.getElementById("city").value;
+    console.log(city);
+  }
+  citySearch();
+  let url =
+    "https://api.openweathermap.org/data/2.5/weather?q=Durham&appid=021e0ef373e6b3285caac8c9e9b52544";
+
+  $.ajax({
+    url: url,
+    method: "GET",
+  }).then(function (responce) {
+    console.log(responce);
+  });
+});

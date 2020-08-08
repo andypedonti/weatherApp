@@ -13,6 +13,7 @@
   grid-column-start: 1;
   grid-column-end: 6;
   text-align: center;
+  align-self: center;
 }
 .item-b {
   grid-column-start: 1;
