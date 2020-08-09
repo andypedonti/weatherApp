@@ -24,8 +24,8 @@ $("#locationSearch").click(function () {
     $.ajax({
       url: url,
       method: "GET",
-    })
-      .then(function (responce) {
+    }).then(
+      function (responce) {
         console.log(responce);
 
         let otherUrl = `http://openweathermap.org/img/wn/${responce.current.weather[0].icon}@2x.png`;
@@ -79,14 +79,16 @@ $("#locationSearch").click(function () {
         $(".day5Description").text(responce.daily[5].weather[0].description);
       })
       .catch(function (error) {});
-  }
-});
+    }
+    
+    
 const day = document.getElementById("day");
 const dayOne = document.getElementById("day1");
 const dayTwo = document.getElementById("day2");
 const dayThree = document.getElementById("day3");
 const dayFour = document.getElementById("day4");
 const dayFive = document.getElementById("day5");
+  
 function updateDay() {
   const now = moment();
   const peopleReadable = now.format("dddd:hh:mma");
@@ -110,21 +112,59 @@ function updateDay() {
 
   updateDay();
 }
-
+})
 $("#citySearch").click(function () {
   console.log("you clicked city search");
   function citySearch() {
-    let city = document.getElementById("city").value;
+    let city = document.getElementById("search").value;
     console.log(city);
   }
   citySearch();
+
+  let city = document.getElementById("search").value;
+
   let url =
-    "https://api.openweathermap.org/data/2.5/weather?q=Durham&appid=021e0ef373e6b3285caac8c9e9b52544";
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&appid=021e0ef373e6b3285caac8c9e9b52544";
 
   $.ajax({
     url: url,
     method: "GET",
   }).then(function (responce) {
     console.log(responce);
+    let lat = responce.coord.lat;
+    let lon = responce.coord.lon;
+    console.log(lat);
+    console.log(lon);
+    let url6 =
+      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&exclude&appid=021e0ef373e6b3285caac8c9e9b52544";
+    $.ajax({
+      url: url6,
+      method: "GET",
+    }).then(function (responce) {
+      console.log(responce);
+    });
   });
-});
+  function postCity() {
+    let storage = JSON.parse(getStor()) || [];
+    let city = document.getElementById("search").value;
+    let objectStorage = {
+      city,
+    };
+    storage.push(objectStorage);
+    localStorage.setItem(city, JSON.stringify(storage));
+    //let div = document.createTextNode(city);
+    //postScore.appendChild(postCity);
+  }
+
+  postCity();
+  getStor();
+  function getStor() {
+    return localStorage.getItem(city);
+  }
+
