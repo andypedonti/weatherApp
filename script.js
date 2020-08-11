@@ -20,12 +20,12 @@ $("#locationSearch").click(function () {
       "&lon=" +
       lon +
       "&exclude&appid=021e0ef373e6b3285caac8c9e9b52544";
-
+    //function getData(){}
     $.ajax({
       url: url,
       method: "GET",
-    }).then(
-      function (responce) {
+    })
+      .then(function (responce) {
         console.log(responce);
 
         let otherUrl = `http://openweathermap.org/img/wn/${responce.current.weather[0].icon}@2x.png`;
@@ -79,40 +79,39 @@ $("#locationSearch").click(function () {
         $(".day5Description").text(responce.daily[5].weather[0].description);
       })
       .catch(function (error) {});
-    }
-    
-    
-const day = document.getElementById("day");
-const dayOne = document.getElementById("day1");
-const dayTwo = document.getElementById("day2");
-const dayThree = document.getElementById("day3");
-const dayFour = document.getElementById("day4");
-const dayFive = document.getElementById("day5");
-  
-function updateDay() {
-  const now = moment();
-  const peopleReadable = now.format("dddd:hh:mma");
-  day.textContent = peopleReadable;
-  console.log(peopleReadable);
-  const dayOnepr = moment().add(1, "days");
-  const dayOnePeopleReadable = dayOnepr.format("dddd: MMM: D");
-  day1.textContent = dayOnePeopleReadable;
-  const daytwopr = moment().add(2, "days");
-  const dayTwoPeopleReadable = daytwopr.format("dddd: MMM: D");
-  day2.textContent = dayTwoPeopleReadable;
-  const dayThreepr = moment().add(3, "days");
-  const dayThreePeopleReadable = dayThreepr.format("dddd: MMM: D");
-  day3.textContent = dayThreePeopleReadable;
-  const dayFourpr = moment().add(4, "days");
-  const dayFourPeopleReadable = dayFourpr.format("dddd: MMM: D");
-  day4.textContent = dayFourPeopleReadable;
-  const dayFivepr = moment().add(5, "days");
-  const dayFivePeopleReadable = dayFivepr.format("dddd: MMM: D");
-  day5.textContent = dayFivePeopleReadable;
+  }
 
-  updateDay();
-}
-})
+  const day = document.getElementById("day");
+  const dayOne = document.getElementById("day1");
+  const dayTwo = document.getElementById("day2");
+  const dayThree = document.getElementById("day3");
+  const dayFour = document.getElementById("day4");
+  const dayFive = document.getElementById("day5");
+
+  function updateDay() {
+    const now = moment();
+    const peopleReadable = now.format("dddd:hh:mma");
+    day.textContent = peopleReadable;
+    console.log(peopleReadable);
+    const dayOnepr = moment().add(1, "days");
+    const dayOnePeopleReadable = dayOnepr.format("dddd: MMM: D");
+    day1.textContent = dayOnePeopleReadable;
+    const daytwopr = moment().add(2, "days");
+    const dayTwoPeopleReadable = daytwopr.format("dddd: MMM: D");
+    day2.textContent = dayTwoPeopleReadable;
+    const dayThreepr = moment().add(3, "days");
+    const dayThreePeopleReadable = dayThreepr.format("dddd: MMM: D");
+    day3.textContent = dayThreePeopleReadable;
+    const dayFourpr = moment().add(4, "days");
+    const dayFourPeopleReadable = dayFourpr.format("dddd: MMM: D");
+    day4.textContent = dayFourPeopleReadable;
+    const dayFivepr = moment().add(5, "days");
+    const dayFivePeopleReadable = dayFivepr.format("dddd: MMM: D");
+    day5.textContent = dayFivePeopleReadable;
+
+    updateDay();
+  }
+});
 $("#citySearch").click(function () {
   console.log("you clicked city search");
   function citySearch() {
@@ -167,4 +166,4 @@ $("#citySearch").click(function () {
   function getStor() {
     return localStorage.getItem(city);
   }
-
+});
