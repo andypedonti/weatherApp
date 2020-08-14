@@ -1,16 +1,11 @@
 $("#locationSearch").click(function () {
-  //   const iconElement = document.querySelector(".weather-icon");
-  //   const tempElement = document.querySelector(".temperature-value p");
-  //   const descElement = document.querySelector(".temperature-description p");
-  //   const locationElement = document.querySelector(".location p");
-
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(setPosition);
   }
-
+  updateDay();
   function setPosition(position) {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
     console.log(lat);
     console.log(lon);
 
@@ -20,7 +15,7 @@ $("#locationSearch").click(function () {
       "&lon=" +
       lon +
       "&exclude&appid=021e0ef373e6b3285caac8c9e9b52544";
-    //function getData(){}
+
     $.ajax({
       url: url,
       method: "GET",
@@ -77,41 +72,19 @@ $("#locationSearch").click(function () {
         $(".day5High").text("High: " + d5High.toFixed(1) + "°F");
         $(".day5Low").text("low: " + d5Low.toFixed(1) + "°F");
         $(".day5Description").text(responce.daily[5].weather[0].description);
+
+        const day = document.getElementById("day");
+        const dayOne = document.getElementById("day1");
+        const dayTwo = document.getElementById("day2");
+        const dayThree = document.getElementById("day3");
+        const dayFour = document.getElementById("day4");
+        const dayFive = document.getElementById("day5");
       })
+
       .catch(function (error) {});
   }
-
-  const day = document.getElementById("day");
-  const dayOne = document.getElementById("day1");
-  const dayTwo = document.getElementById("day2");
-  const dayThree = document.getElementById("day3");
-  const dayFour = document.getElementById("day4");
-  const dayFive = document.getElementById("day5");
-
-  function updateDay() {
-    const now = moment();
-    const peopleReadable = now.format("dddd:hh:mma");
-    day.textContent = peopleReadable;
-    console.log(peopleReadable);
-    const dayOnepr = moment().add(1, "days");
-    const dayOnePeopleReadable = dayOnepr.format("dddd: MMM: D");
-    day1.textContent = dayOnePeopleReadable;
-    const daytwopr = moment().add(2, "days");
-    const dayTwoPeopleReadable = daytwopr.format("dddd: MMM: D");
-    day2.textContent = dayTwoPeopleReadable;
-    const dayThreepr = moment().add(3, "days");
-    const dayThreePeopleReadable = dayThreepr.format("dddd: MMM: D");
-    day3.textContent = dayThreePeopleReadable;
-    const dayFourpr = moment().add(4, "days");
-    const dayFourPeopleReadable = dayFourpr.format("dddd: MMM: D");
-    day4.textContent = dayFourPeopleReadable;
-    const dayFivepr = moment().add(5, "days");
-    const dayFivePeopleReadable = dayFivepr.format("dddd: MMM: D");
-    day5.textContent = dayFivePeopleReadable;
-
-    updateDay();
-  }
 });
+
 $("#citySearch").click(function () {
   console.log("you clicked city search");
   function citySearch() {
@@ -147,8 +120,10 @@ $("#citySearch").click(function () {
       method: "GET",
     }).then(function (responce) {
       console.log(responce);
+      updateDay();
     });
   });
+
   function postCity() {
     let storage = JSON.parse(getStor()) || [];
     let city = document.getElementById("search").value;
@@ -167,3 +142,24 @@ $("#citySearch").click(function () {
     return localStorage.getItem(city);
   }
 });
+function updateDay() {
+  const now = moment();
+  const peopleReadable = now.format("dddd:hh:mma");
+  day.textContent = peopleReadable;
+  console.log(peopleReadable);
+  const dayOnepr = moment().add(1, "days");
+  const dayOnePeopleReadable = dayOnepr.format("dddd: MMM: D");
+  day1.textContent = dayOnePeopleReadable;
+  const daytwopr = moment().add(2, "days");
+  const dayTwoPeopleReadable = daytwopr.format("dddd: MMM: D");
+  day2.textContent = dayTwoPeopleReadable;
+  const dayThreepr = moment().add(3, "days");
+  const dayThreePeopleReadable = dayThreepr.format("dddd: MMM: D");
+  day3.textContent = dayThreePeopleReadable;
+  const dayFourpr = moment().add(4, "days");
+  const dayFourPeopleReadable = dayFourpr.format("dddd: MMM: D");
+  day4.textContent = dayFourPeopleReadable;
+  const dayFivepr = moment().add(5, "days");
+  const dayFivePeopleReadable = dayFivepr.format("dddd: MMM: D");
+  day5.textContent = dayFivePeopleReadable;
+}
