@@ -1,4 +1,10 @@
 $("#locationSearch").click(function () {
+  $(".weatherIcon").empty();
+  $(".icon1").empty();
+  $(".icon2").empty();
+  $(".icon3").empty();
+  $(".icon4").empty();
+  $(".icon5").empty();
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(setPosition);
   }
@@ -86,6 +92,12 @@ $("#locationSearch").click(function () {
 });
 
 $("#citySearch").click(function () {
+  $(".weatherIcon").empty();
+  $(".icon1").empty();
+  $(".icon2").empty();
+  $(".icon3").empty();
+  $(".icon4").empty();
+  $(".icon5").empty();
   console.log("you clicked city search");
   function citySearch() {
     let city = document.getElementById("search").value;
