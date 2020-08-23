@@ -215,7 +215,8 @@ function citySearch() {
   // console.log(storage);
   localStorage.setItem("search", city);
   let postCity = document.getElementById("postCity");
-  let div = document.createTextNode(city);
+  let div = document.createElement("div");
+  div.textContent = city;
   postCity.appendChild(div);
 
   // storage.push(objectStorage);
