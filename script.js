@@ -99,11 +99,9 @@ $("#citySearch").click(function () {
   $(".icon4").empty();
   $(".icon5").empty();
   console.log("you clicked city search");
-  function citySearch() {
-    let city = document.getElementById("search").value;
-    console.log(city);
-  }
+
   citySearch();
+  // postCity();
 
   let city = document.getElementById("search").value;
 
@@ -184,24 +182,6 @@ $("#citySearch").click(function () {
       $(".day5Description").text(responce.daily[5].weather[0].description);
     });
   });
-
-  function postCity() {
-    let storage = JSON.parse(getStor()) || [];
-    let city = document.getElementById("search").value;
-    let objectStorage = {
-      city,
-    };
-    storage.push(objectStorage);
-    localStorage.setItem(city, JSON.stringify(storage));
-    //let div = document.createTextNode(city);
-    //postScore.appendChild(postCity);
-  }
-
-  postCity();
-  getStor();
-  function getStor() {
-    return localStorage.getItem(city);
-  }
 });
 function updateDay() {
   const now = moment();
@@ -223,4 +203,24 @@ function updateDay() {
   const dayFivepr = moment().add(5, "days");
   const dayFivePeopleReadable = dayFivepr.format("dddd: MMM: D");
   day5.textContent = dayFivePeopleReadable;
+}
+function citySearch() {
+  let city = document.getElementById("search").value;
+  console.log(city);
+
+  // let storage = city;
+  // let objectStorage = {
+  //   city,
+  // };
+  // console.log(storage);
+  localStorage.setItem("search", city);
+  let postCity = document.getElementById("postCity");
+  let div = document.createTextNode(city);
+  postCity.appendChild(div);
+
+  // storage.push(objectStorage);
+  // localStorage.setItem("codequiz", JSON.stringify(storage));
+  // let postScore = document.getElementById("postScore");
+  // let div = document.createTextNode(initials + " " + numbers);
+  // postScore.appendChild(div);
 }
