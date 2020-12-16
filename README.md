@@ -2,7 +2,7 @@
   
           
   ##  Description
-  undefined
+  This is an app that provides weather forecasts based on the users location or a search inputed by user. 
 
   ##  Table of Contents
   * [Problem](#Problem)
